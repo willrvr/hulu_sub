@@ -10,9 +10,10 @@
 force-http-engine-hosts = %APPEND%  assets.huluim.com 
 
 [Script]
-DualSubs.Hulu.HLS.Main.m3u8 = type=http-response, pattern=^https?:\/\/manifest-dp\.hulustream\.com\/hls\/(\d+)\.m3u8(\?.+)?$, requires-body=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/DualSubs/DualSubs/main/js/archive/v0.7/DualSubs.HLS.Main.m3u8.js
-DualSubs.Hulu.HLS.WebVTT.m3u8 = type=http-response, pattern=^https?:\/\/manifest-dp\.hulustream\.com\/webvtt(\?.*dualsubs=\w+)$, requires-body=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/DualSubs/DualSubs/main/js/archive/v0.7/DualSubs.HLS.WebVTT.m3u8.js
-DualSubs.Hulu.SUB.WebVTT = type=http-response, pattern=^https?:\/\/(assets\.huluim\.com|assetshuluimcom-a\.akamaihd\.net)\/captions_webvtt\/(.+[^blank])\.vtt(\?.*dualsubs=\w+)$, requires-body=1, max-size=0, timeout=30, script-path=https://raw.githubusercontent.com/DualSubs/DualSubs/main/js/archive/v0.7/DualSubs.SUB.WebVTT.js
+Hulu.Master.m3u8.response = type=http-response, pattern=^https?:\/\/manifest-dp\.hulustream\.com\/hls\/(\d+)\.m3u8, requires-body=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/DualSubs.Master.m3u8.response.js
+Hulu.Subtitles.m3u8.response = type=http-response, pattern=^https?:\/\/manifest-dp\.hulustream\.com\/webvtt(\?.*subtype=.+)$, requires-body=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/DualSubs.Subtitles.m3u8.response.js
+Hulu.Subtitles.Composite.response = type=http-response, pattern=^https?:\/\/(assets\.huluim\.com|assetshuluimcom-a\.akamaihd\.net)\/captions_webvtt\/(.+[^blank])\.vtt(\?.*subtype=(Official|External).*)$, requires-body=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/DualSubs.Subtitles.Composite.response.js
+Hulu.Subtitles.Translate.response = type=http-response, pattern=^https?:\/\/(assets\.huluim\.com|assetshuluimcom-a\.akamaihd\.net)\/captions_webvtt\/(.+[^blank])\.vtt(\?.*subtype=Translate.*)$, requires-body=1, script-path=https://raw.githubusercontent.com/DualSubs/Universal/main/js/DualSubs.Subtitles.Translate.response.js
 
 
 [MITM]
